@@ -20,7 +20,7 @@ SplashScreen.preventAutoHideAsync();
 function Router() {
   const router = useRouter();
   const { isDark } = useColorScheme();
-  const { dispatch, setUser, setLoggedIn } = useAppSlice();
+  const { dispatch, setUser, setLoggedIn, loggedIn } = useAppSlice();
   const { setPersistData, getPersistData } = useDataPersist();
   const [isOpen, setOpen] = useState(false);
 
@@ -33,11 +33,11 @@ function Router() {
         // preload assets
         await Promise.all([loadImages(), loadFonts()]);
 
-        // fetch & store user data to store (fake promise function to simulate async function)
-        const user = await fetchUser();
-        dispatch(setUser(user));
-        dispatch(setLoggedIn(!!user));
-        if (user) setPersistData<User>(DataPersistKeys.USER, user);
+        // // fetch & store user data to store (fake promise function to simulate async function)
+        // const user = await fetchUser();
+        // dispatch(setUser(user));
+        // dispatch(setLoggedIn(!!user));
+        // if (user) setPersistData<User>(DataPersistKeys.USER, user);
 
         // hide splash screen
         SplashScreen.hideAsync();
@@ -61,21 +61,25 @@ function Router() {
     preload();
   }, []);
 
-  // navigate to app
+  // Navigate to main screen after initial load
   useEffect(() => {
-    router.push('/(main)/home');
-  }, [router]);
+    if (loggedIn) {
+      router.push('/(main)/home');
+    } else {
+      router.push('/auth/authScreen/loginSection'); // Redirect to login page if not logged in
+    }
+  }, [router, loggedIn]);
 
   return (
     <Fragment>
       <Slot />
       <StatusBar style="light" />
-      <BottomSheet
+      {/* <BottomSheet
         isOpen={isOpen}
         initialOpen
         backgroundStyle={isDark && { backgroundColor: colors.blackGray }}>
         <BottomSheetContents onClose={() => setOpen(false)} />
-      </BottomSheet>
+      </BottomSheet> */}
     </Fragment>
   );
 }
