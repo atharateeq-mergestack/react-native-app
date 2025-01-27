@@ -14,7 +14,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 import { InputField } from '@/components/common/InputField';
 import Button from '@/components/common/Button';
-import LoginSchema from '@/app/auth/authScreen/loginSection/validation';
+import LoginSchema from '@/app/(auth)/authScreen/loginSection/validation';
 import { router } from 'expo-router';
 import { showToast } from '@/utils/toast';
 import * as SplashScreen from 'expo-splash-screen';
@@ -100,7 +100,7 @@ const LoginSection = () => {
             />
 
             <View style={styles.haveAccount}>
-              <TouchableOpacity onPress={() => router.push('/auth/authScreen/signUpSection')}>
+              <TouchableOpacity onPress={() => router.push('/(auth)/authScreen/signUpSection')}>
                 <Text style={styles.signupText}>Already have an account?</Text>
               </TouchableOpacity>
             </View>

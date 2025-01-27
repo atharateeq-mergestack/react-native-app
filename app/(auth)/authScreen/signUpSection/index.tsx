@@ -6,7 +6,7 @@ import { Controller, useForm } from 'react-hook-form';
 
 import Button from '@/components/common/Button';
 import { InputField } from '@/components/common/InputField';
-import SignUpSchema from '@/app/auth/authScreen/signUpSection/validation';
+import SignUpSchema from '@/app/(auth)/authScreen/signUpSection/validation';
 import { IUserData } from '@/utils/helper';
 import { showToast } from '@/utils/toast';
 
