@@ -21,9 +21,6 @@ export default function ProfileStackLayout() {
         name="index"
         options={{
           title: 'Profile',
-          headerTitle: () => <NavigationHeaderTitle />,
-          headerLeft: () => <NavigationHeaderLeft onPress={toggleDrawer} />,
-          headerTitleAlign: 'center',
         }}
       />
       <Stack.Screen name="details" options={{ title: 'Details' }} />

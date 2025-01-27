@@ -6,7 +6,7 @@ import { Controller, useForm } from 'react-hook-form';
 
 import Button from '@/components/common/Button';
 import { InputField } from '@/components/common/InputField';
-import { SignUpSchema } from '@/app/auth/authScreen/signUpSection/validation';
+import SignUpSchema from '@/app/auth/authScreen/signUpSection/validation';
 import { IUserData } from '@/utils/helper';
 import { showToast } from '@/utils/toast';
 
@@ -41,7 +41,7 @@ const SignUpSection = ({ setIsLogin }: ISignUpSection) => {
       <ScrollView contentContainerStyle={styles.scrollView}>
         {/* App Logo */}
         <View style={styles.logoContainer}>
-          <Image source={require('../../../../assets/images/logo.svg')} style={styles.logo} />
+          <Image source={require('../../../../assets/images/logo-lg.png')} style={styles.logo} />
         </View>
 
         {/* Heading */}

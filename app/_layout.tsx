@@ -63,8 +63,8 @@ function Router() {
 
   // Navigate to main screen after initial load
   useEffect(() => {
-    if (loggedIn) {
-      router.push('/(main)/home');
+    if (!loggedIn) {
+      router.push('/(main)/(tabs)/home');
     } else {
       router.push('/auth/authScreen/loginSection'); // Redirect to login page if not logged in
     }

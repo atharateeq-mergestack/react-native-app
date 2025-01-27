@@ -14,10 +14,12 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 import { InputField } from '@/components/common/InputField';
 import Button from '@/components/common/Button';
-import { loginSchema } from '@/app/auth/authScreen/loginSection/validation';
+import LoginSchema from '@/app/auth/authScreen/loginSection/validation';
 import { router } from 'expo-router';
 import { showToast } from '@/utils/toast';
 import * as SplashScreen from 'expo-splash-screen';
+// import { useAppSlice } from '@/slices';
+// import { useDataPersist } from '@/hooks';
 
 // Prevent the splash screen from hiding automatically
 SplashScreen.preventAutoHideAsync();
@@ -28,8 +30,11 @@ const LoginSection = () => {
     formState: { errors },
     handleSubmit,
   } = useForm({
-    resolver: yupResolver(loginSchema),
+    resolver: yupResolver(LoginSchema),
   });
+
+  // const { dispatch, setUser, setLoggedIn, loggedIn } = useAppSlice();
+  // const { setPersistData, getPersistData } = useDataPersist();
 
   const onSubmit = async (data: any) => {
     try {
@@ -37,6 +42,8 @@ const LoginSection = () => {
       const response = { success: true, message: 'ASSA' };
       // Show a success toast
       if (response.success) {
+        // dispatch(setUser({}));
+        // dispatch(setLoggedIn(!!user));
         showToast('success', 'Congrats', response.message);
         router.replace('/main/drawer');
       }
@@ -51,7 +58,7 @@ const LoginSection = () => {
       <ScrollView contentContainerStyle={styles.scrollView}>
         {/* App Logo */}
         <View style={styles.logoContainer}>
-          <Image source={require('../../../../assets/images/logo.svg')} style={styles.logo} />
+          <Image source={require('../../../../assets/images/logo-lg.png')} style={styles.logo} />
         </View>
 
         {/* Heading */}
@@ -92,10 +99,11 @@ const LoginSection = () => {
               )}
             />
 
-            {/* "Already have an account?" text */}
-            <TouchableOpacity onPress={() => router.push('/auth/authScreen/signUpSection')}>
-              <Text style={styles.signupText}>Already have an account?</Text>
-            </TouchableOpacity>
+            <View style={styles.haveAccount}>
+              <TouchableOpacity onPress={() => router.push('/auth/authScreen/signUpSection')}>
+                <Text style={styles.signupText}>Already have an account?</Text>
+              </TouchableOpacity>
+            </View>
 
             {/* Login Button */}
             <Button
@@ -133,6 +141,10 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     marginTop: 24,
+  },
+  haveAccount: {
+    flex: 1,
+    alignItems: 'flex-end',
   },
   subheading: {
     color: 'gray',

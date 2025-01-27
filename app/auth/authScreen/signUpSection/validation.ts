@@ -2,7 +2,7 @@ import * as yup from 'yup';
 
 import { isAlphabetic, isAlphaNumeric, isValidEmail, isStrongPassword } from '@/utils/helper';
 
-export const SignUpSchema = yup.object({
+const SignUpSchema = yup.object({
   firstName: yup
     .string()
     .required('First name is required')
@@ -43,3 +43,5 @@ export const SignUpSchema = yup.object({
       value => isStrongPassword(value || ''),
     ),
 });
+
+export default SignUpSchema;

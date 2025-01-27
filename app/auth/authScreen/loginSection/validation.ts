@@ -2,7 +2,7 @@ import * as yup from 'yup';
 
 import { isStrongPassword, isValidEmail } from '@/utils/helper';
 
-export const loginSchema = yup.object({
+const LoginSchema = yup.object({
   email: yup
     .string()
     .email('Invalid email address')
@@ -19,3 +19,5 @@ export const loginSchema = yup.object({
       value => isStrongPassword(value || ''),
     ),
 });
+
+export default LoginSchema;
