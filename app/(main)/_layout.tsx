@@ -38,6 +38,14 @@ export default function DrawerWithTabsLayout() {
           drawerIcon: ({ color }) => <Ionicons name="person-outline" size={24} color={color} />,
         }}
       />
+      <Drawer.Screen
+        name="logout/index"
+        options={{
+          headerTitle: 'Logout',
+          drawerLabel: 'Logout',
+          drawerIcon: ({ color }) => <Ionicons name="log-out-outline" size={24} color={color} />,
+        }}
+      />
     </Drawer>
   );
 }
