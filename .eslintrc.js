@@ -5,4 +5,11 @@ module.exports = {
   rules: {
     'prettier/prettier': 'error',
   },
+  settings: {
+    'import/resolver': {
+      typescript: {
+        project: './tsconfig.json', // or path to your tsconfig.json
+      },
+    },
+  },
 };

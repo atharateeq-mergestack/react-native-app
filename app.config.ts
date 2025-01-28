@@ -26,8 +26,8 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       eas: { projectId: expoProjectId },
       env: process.env.ENV ?? 'development',
       apiUrl: process.env.API_URL ?? 'https://example.com',
-      // add more env variables here...
     },
+    scheme: process.env.EXPO_SCHEME ?? 'myapp', // Add the scheme here
     plugins: [
       'expo-router',
       'expo-asset',
@@ -58,6 +58,6 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       ],
     ],
   };
-  // console.log('[##] expo config', expoConfig);
+
   return expoConfig;
 };
