@@ -62,3 +62,21 @@ export const colors = {
   muted: '#707981',
   white: '#FFFFFF',
 };
+
+export interface IProduct {
+  id: string;
+  name: string;
+  description: string;
+  image: string;
+  price: number;
+  quantity: number;
+  categoryId: string;
+  discount?: number;
+}
+
+export interface ICategory {
+  id: string;
+  name: string;
+  description: string;
+  image: string;
+}

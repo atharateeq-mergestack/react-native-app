@@ -5,7 +5,7 @@ export default function DrawerWithTabsLayout() {
   return (
     <Drawer
       screenOptions={{
-        headerShown: true,
+        headerShown: false,
         drawerType: 'front',
         drawerStyle: {
           backgroundColor: '#f4f4f4',
@@ -21,11 +21,16 @@ export default function DrawerWithTabsLayout() {
         drawerInactiveTintColor: '#555',
       }}>
       <Drawer.Screen
-        name="(tabs)"
+        name="index"
         options={{
-          headerTitle: 'Tabs',
-          drawerLabel: 'Tabs',
-          headerShown: false,
+          drawerItemStyle: { display: 'none' },
+        }}
+      />
+      <Drawer.Screen
+        name="home"
+        options={{
+          headerTitle: 'Home',
+          drawerLabel: 'Home',
           drawerIcon: ({ color }) => <Ionicons name="home-outline" size={24} color={color} />,
         }}
       />

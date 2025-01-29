@@ -1,7 +1,6 @@
 import { createUser } from '@/api';
-import { IUserData } from '@/utils/helper';
 import { showToast } from '@/utils/toast';
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 import { router } from 'expo-router';
 
 // React Query Hook to create user
